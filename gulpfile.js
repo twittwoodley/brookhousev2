@@ -6,7 +6,7 @@ var autoprefixer = require('gulp-autoprefixer');
 gulp.task('serve', ['autoprefixer'], function() {
 
     browserSync.init({
-        notify: false,
+    notify: false,
     proxy: "http://localhost:11467/",
     ghostMode: false
     });

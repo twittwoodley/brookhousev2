@@ -22,10 +22,11 @@ remove_filter( 'the_excerpt', 'wpautop' );
 //Custom Post Types
 function custom_post_types() {
 	register_post_type('Exmouth', array(
-		'supports' => array('title', 'editor', 'excerpt'),
+		'supports' => array('title', 'editor', 'excerpt', 'page-attributes'),
 		'rewrite' => array('slug' => 'exmouth'),
 		'has_archive' => true,
 		'public' => true,
+		'taxonomies'  => array( 'category' ),
 		'labels' => array(
 			'name' => 'Exmouth',
 			'add_new_item' => 'Add New Post',
@@ -36,7 +37,6 @@ function custom_post_types() {
 		'menu_icon' => 'dashicons-format-status'
 	));		
 }
-
  add_action('init', 'custom_post_types');
 
 //removes header admin bar
