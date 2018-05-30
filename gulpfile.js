@@ -1,6 +1,7 @@
-var gulp        = require('gulp');
-var browserSync = require('browser-sync').create();
-var autoprefixer = require('gulp-autoprefixer');
+var gulp            = require('gulp');
+var browserSync     = require('browser-sync').create();
+var autoprefixer    = require('gulp-autoprefixer');
+var cleanCSS        = require('gulp-clean-css');
 
 // Static Server + watching scss/html files
 gulp.task('serve', ['autoprefixer'], function() {
@@ -22,6 +23,7 @@ gulp.task('autoprefixer', function() {
             browsers: ['last 3 versions'],
             cascade: false
             }))
+        .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(gulp.dest("./wp-content/themes/brookhouse/build"))
         .pipe(browserSync.stream());
 });

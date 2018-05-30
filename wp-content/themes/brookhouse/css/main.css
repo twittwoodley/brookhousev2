@@ -129,7 +129,7 @@ nav li {
 	align-items: center;
 /*   border-bottom: 5px inset rgb(252, 233, 201);
    */  color: var(--wheat);
-   transition: 0.5s;
+   transition: 0.15s;
 
 }
 

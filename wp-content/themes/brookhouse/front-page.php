@@ -134,6 +134,46 @@ Etiam a feugiat augue. Vivamus a finibus purus, id posuere turpis. Vestibulum qu
 	  </div>
 </div>
 </div><!-- Content-wrap closing div -->
+<<!-- ?php
+	print_r(get_categories());
+	$exmouthCats = array();
+	$categories = get_categories();
+
+	foreach ($categories as $category) {
+		if ($category->name === 'Uncategorized') {
+			continue;
+		}
+
+		/*echo $category->name;*/
+		array_push($exmouthCats, $category->name);
+		get_field('background_image', $category->cat_ID);
+	}
+
+	print_r($exmouthCats);
+?> -->
+
+<?php
+
+$args = array( 'hide_empty' => '0');
+$categories = get_categories($args);
+if($categories){
+	echo '<ul>';
+	foreach($categories as $category) {
+		echo '<li>';
+		$image = get_field('background_image', 'category_'.$category->term_id);
+		echo '<img src="' . $image . ' />'; //change depending on the return value of the image field
+		echo '<span class="cat-title">' . $category->name . '</span>';
+		echo '<span class="cat-subtitle">' . get_field('nameofsubtitlefield', 'category_'.$category->term_id) . '</span>';
+		echo '<span class="cat-description">' . $category->description . '</span>';
+		echo '</li>';
+	} 
+	echo '</ul>';
+}    
+print_r($categories);
+?>
+
+
+
 <?php
 	get_footer();
 ?>
