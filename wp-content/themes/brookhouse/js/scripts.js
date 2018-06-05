@@ -49,7 +49,7 @@ function changeImage(current) {
 
       }
 
-    panels.forEach(panel => panel.addEventListener('click', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('mouseenter', toggleOpen));
 
 //Nav JS
     const nav = document.querySelector('#main');

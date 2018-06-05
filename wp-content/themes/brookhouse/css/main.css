@@ -190,6 +190,7 @@ li.logo img {
   justify-content: center;
   align-items: center;
   position: relative;
+  flex-direction: column;
 }
 
 .home-jumbotron h1 {
@@ -198,6 +199,10 @@ li.logo img {
   text-shadow: var(--grey) -4px 1px 12px;
 }
 
+.home-jumbotron p {
+  color: white;
+  z-index: 1;
+}
 .inner-jumbo {
   display: flex;
   align-items: center;
@@ -399,7 +404,7 @@ li.logo img {
     display: flex;
     /* flex-direction: column; */
     /* max-width: 1480px; */
-    /* width: 100%; */
+    width: 100%;    
     border-radius: 10px;
 }
 
@@ -435,7 +440,7 @@ li.logo img {
   padding: 10px 20px;
   opacity: 0;
   transition: 1s;
-  transform: translateY(100%);
+  transform: translateY(30%) scale(0.8);
   z-index: 2;
   color: white;
 
@@ -481,4 +486,8 @@ li.logo img {
     margin: 20px 0;
 }
 
+/*CATEGORY.PHP Styling */
 
+.category-panel {
+  flex-direction: column;
+}

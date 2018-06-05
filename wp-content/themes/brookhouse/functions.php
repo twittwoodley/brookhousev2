@@ -1,10 +1,7 @@
 <?php
 function brook_house_theme_files() {
-	//wp_enqueue_script('jquery');
-	wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
-	//wp_enqueue_style('bootstrap', '//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css'); //Font Awesome
-	wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
-	//wp_enqueue_style('university_main_styles',get_stylesheet_uri(), NULL, microtime()	); //style.css in theme route
+	//wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
+	//wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
 	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4', NULL,  true);
@@ -21,7 +18,7 @@ remove_filter( 'the_excerpt', 'wpautop' );
 
 //Custom Post Types
 function custom_post_types() {
-	register_post_type('Exmouth', array(
+	register_post_type('exmouth', array(
 		'supports' => array('title', 'editor', 'excerpt', 'page-attributes'),
 		'rewrite' => array('slug' => 'exmouth'),
 		'has_archive' => true,
