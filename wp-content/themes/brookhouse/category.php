@@ -45,27 +45,48 @@ $args = array(
         );
 ?>
   <div class="about-inner category-panel"> <!-- Start of panel gallery -->
+    <div class="acf-map">
+
     <?php
       $loop = new WP_Query( $args); //New QP loop with above args
-      while ( $loop->have_posts() ) : $loop->the_post();
-      $image = get_field('background_image'); //get post (not category) backgorund image
+      $postInformation = array();   //Empty array for post information to be pushed to so it can be used outsice of the loop
+      while ( $loop->have_posts()) { $loop->the_post();
+      $mapLocation = get_field('gmap');
+      $info = array(               //variable to store post information
+        get_the_title(),
+        get_the_excerpt(),
+        get_the_permalink(),
+        get_field('background_image')
+      );
+      array_push($postInformation, $info); //push information to the array
     ?>
-
-      <div class="panel" style="background-image:url(<?php echo $image ?>)">
-        <div class="dark-underlay"></div>
-        <h3><?php the_title() ?></h3>
-        <p class="panel-excerpt">
-          <?php the_excerpt() ?>
-          <br>
-          <span class="read-more"><a href="<?php echo the_permalink(); ?>">Read More >></a></span>
-        </p>
-      </div>
+    <div class="marker" data-lat="<?php echo $mapLocation['lat']; ?>" data-lng="<?php echo $mapLocation['lng']; ?>">
+          <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+          <?php echo $mapLocation['address']; ?><br>
+          <a href="<?php the_permalink(); ?>">Read more</a>
+        </div>
       
       <?php
-      endwhile;
-      wp_reset_postdata();
+      }
       ?>
     </div>
+    </div>
+    <div class="about-inner category-panel"> <!-- Start of panel gallery -->
+    <?php wp_reset_postdata();
+    foreach($postInformation as $post) {     //get information from above array. The information was pushed from the original WP loop
+    ?>
+    <div class="panel column-panel" style="background-image:url(<?php echo $post[3] ?>)">
+        <div class="dark-underlay"></div>
+        <h3><?php echo $post[0] ?></h3>
+        <p class="panel-excerpt">
+          <?php echo $post[1] ?><br>
+          <br>
+          <span class="read-more"><a href="<?php echo $post[2] ?>">Read More >></a></span>
+        </p>
+      </div>
+    <?php }
+    ?>
+
 </div>
 
   <?php

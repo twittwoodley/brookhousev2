@@ -79,7 +79,9 @@ Etiam a feugiat augue. Vivamus a finibus purus, id posuere turpis. Vestibulum qu
 			<h2>Gallery</h2>
 			<div id="thumbs">
 				<?php foreach( $gallery as $image_obj ) { ?>
-				<a href="javascript: changeImage(<?php echo $counter2++ ?>);"><img src="<?php echo $image_obj['src'] ?>"/></a>
+				<a href="javascript: changeImage(<?php echo $counter2++ ?>);">
+					<img style="background-image: url(<?php echo $image_obj['src'] ?>)"/>
+				</a>
 			<?php
 			}?>
 			</div>

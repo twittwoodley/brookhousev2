@@ -1,7 +1,7 @@
 <?php
 function brook_house_theme_files() {
-	//wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
-	//wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
+	wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
+	wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
 	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4', NULL,  true);
@@ -55,9 +55,7 @@ show_admin_bar( false );
 
 //Gmaps
 function my_acf_google_map_api( $api ){
- 
  $api['key'] = 'AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4';
- 
  return $api;
  
 }
