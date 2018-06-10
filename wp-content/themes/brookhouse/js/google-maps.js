@@ -63,11 +63,17 @@ function add_marker( $marker, map ) {
 	var latlng = new google.maps.LatLng( $marker.attr('data-lat'), $marker.attr('data-lng') );
 
 	// create marker
-	var marker = new google.maps.Marker({
-		position	: latlng,
-		map			: map
-	});
+// create marker
 
+
+	var marker = new google.maps.Marker({
+		position: latlng,
+		map:      map,
+		title:    'DSRU',
+/*		icon:     'https://pbs.twimg.com/profile_images/885069392538734593/29jWZpn5_400x400.jpg',
+*/		icon: $marker.attr('data-icon')
+	});
+console.log(marker);
 	// add to array
 	map.markers.push( marker );
 
@@ -155,3 +161,4 @@ $(document).ready(function(){
 });
 
 })(jQuery);
+

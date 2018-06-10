@@ -1,6 +1,5 @@
 <?php
   get_header();
-
   $category_ID = $wp_query->get_queried_object_id(); //Get this ID of current Category
    $args = array(                                   //Filters and conditions
     'category__in' => array(
@@ -33,47 +32,73 @@ get_template_part('template-parts/content', 'navigation'); // get nav bar
 
 
 //Args to get all posts within category
-$args = array(  
-       'post_type' => 'exmouth',
-       'post_status' => 'publish',
-       'posts_per_page' => 8,
-       ‘orderby’ => ‘title’,
-       ‘order’ => ‘ASC’,
-       'category__in' => array(
-            'cat' =>$category_ID
-            )
-        );
-?>
-  <div class="about-inner category-panel"> <!-- Start of panel gallery -->
-    <div class="acf-map">
+//args go here
+  function order_by_date( $a, $b )
+  {
+    return strcmp( $b->post_date, $a->post_date );
+  }
+  // get the posts for the first query
+  $q1_args = array(
+    // args for the first query 
+    'post_type' => array('exmouth'),
+    'posts_per_page' => '-1',
+    'category__in' => 
+        array(
+        'cat' =>$category_ID
+      ));
 
-    <?php
-      $loop = new WP_Query( $args); //New QP loop with above args
-      $postInformation = array();   //Empty array for post information to be pushed to so it can be used outsice of the loop
-      while ( $loop->have_posts()) { $loop->the_post();
-      $mapLocation = get_field('gmap');
-      $info = array(               //variable to store post information
-        get_the_title(),
-        get_the_excerpt(),
-        get_the_permalink(),
-        get_field('background_image')
-      );
-      array_push($postInformation, $info); //push information to the array
-    ?>
-    <div class="marker" data-lat="<?php echo $mapLocation['lat']; ?>" data-lng="<?php echo $mapLocation['lng']; ?>">
-          <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-          <?php echo $mapLocation['address']; ?><br>
-          <a href="<?php the_permalink(); ?>">Read more</a>
-        </div>
-      
+  $q1_posts = get_posts( $q1_args );
+  // get the posts for the second query
+  $q2_args = array(
+    // args for the second query
+    'post_type' => 'page',
+    'pagename' => 'contact'
+  );
+  $q2_posts= get_posts( $q2_args );
+  // Merge the post arrays together, and sort by date using the order_by_date function
+  $final_posts = array_merge( $q1_posts, $q2_posts );
+  usort( $final_posts, 'order_by_date' );
+  // Loop over the posts and use setup_postdata to format for template tag usage
+
+  ?>
+  <div class="about-inner category-panel"> <!-- Start of panel gallery -->
+<div class="acf-map">
       <?php
-      }
-      ?>
+      $postInformation = array();   //Empty array for post information to be pushed to so it can be used outsice of the loop
+      foreach ( $final_posts as $key => $post ) {
+        setup_postdata( $post ); 
+        print_r($post);
+        // Now we can use template tags as if this was in a normal WP loop
+          $mapLocation = get_field('gmap');
+          $marker_image = get_field('marker_logo');
+          $info = array(               //variable to store post information
+            get_the_title(),
+            get_the_excerpt(),
+            get_the_permalink(),
+            get_field('background_image')
+          );
+          array_push($postInformation, $info); //push information to the array
+        ?>
+      <div class="marker" 
+      data-lat="<?php echo $mapLocation['lat']; ?>" 
+      data-lng="<?php echo $mapLocation['lng'];?>" 
+      data-icon="<?php echo $marker_image;?>">
+        <h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+        <?php echo $mapLocation['address']; ?><br>
+        <a href="<?php the_permalink(); ?>">Read more</a>
+      </div>    
+
+<?php }
+?>
     </div>
-    </div>
-    <div class="about-inner category-panel"> <!-- Start of panel gallery -->
-    <?php wp_reset_postdata();
+  </div>
+
+  <div class="about-inner category-panel"> <!-- Start of panel gallery -->
+    <?php //wp_reset_postdata();
     foreach($postInformation as $post) {     //get information from above array. The information was pushed from the original WP loop
+      if($post[0] === 'Contact') {
+        continue;
+      }
     ?>
     <div class="panel column-panel" style="background-image:url(<?php echo $post[3] ?>)">
         <div class="dark-underlay"></div>
