@@ -14,5 +14,8 @@
     "gulp-autoprefixer": "^5.0.0",
     "gulp-clean-css": "^3.9.4",
     "gulp-uglify": "^3.0.0"
+  },
+  "dependencies": {
+    "slick-carousel": "^1.8.1"
   }
 }

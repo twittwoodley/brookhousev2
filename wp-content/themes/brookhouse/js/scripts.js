@@ -46,10 +46,18 @@ function changeImage(current) {
         });
         this.classList.add('text-active');
         this.classList.add('dark-underlay-active');
-
       }
 
+    function toggleClose(e) {
+      panels.forEach(panel => {
+        panel.classList.remove('open');
+        panel.classList.remove('dark-underlay-active');
+        panel.classList.remove('text-active')
+      });
+    }
+
     panels.forEach(panel => panel.addEventListener('mouseenter', toggleOpen));
+    panels.forEach(panel => panel.addEventListener('mouseleave', toggleClose));
 
 //Nav JS
     const nav = document.querySelector('#main');
@@ -66,3 +74,38 @@ function changeImage(current) {
     }
 
     window.addEventListener('scroll', fixNav);
+
+//Lazy Loading
+const observer = lozad(); // lazy loads elements with default selector as ".lozad"
+observer.observe();
+
+//Slick
+
+jQuery('.autoplay').slick({
+   centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 3,
+  arrows: false,
+  dots: true,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ],
+  autoplay: true,
+});

@@ -1,15 +1,24 @@
 <?php
 	get_header();
-	get_template_part('template-parts/content', 'navigation');
 ?>
-<section>
-	There are so many reasons why you should visit Exmouth.<br>
-	It's situalted inside of East Devon, which is an area of outstanding national beauty<br>
-	Have a look at our map to see all of the wonderful places nearby
 
-</section>
- <?php
-   function order_by_date( $a, $b )
+  <section class="home-jumbotron" style="background-image: url(<?php echo get_theme_file_uri('/img/brook-house-cover.jpg'); ?>)">
+    <div class="jumbo-dark-underlay dark-underlay"></div>
+     <div class="inner-jumbo">
+      <div class="bar"></div>
+      <div class="title-cont"><h2>About Exmouth</h2></div>
+      <div class="bar"></div>
+    </div>
+    <p>
+      There are so many reasons why you should visit Exmouth.<br>
+  It's situalted inside of East Devon, which is an area of outstanding national beauty<br>
+  Have a look at our map to see all of the wonderful places nearby
+    </p>
+  </section>
+<?php
+  get_template_part('template-parts/content', 'navigation');
+
+  function order_by_date( $a, $b )
   {
     return strcmp( $b->post_date, $a->post_date );
   }
@@ -62,10 +71,13 @@
       </div>    
 
 <?php }
+  wp_reset_postdata();?>      
+
 ?>
     </div>
   </div>
 
-  <?php
+<!-- Panel Section -->
+<?php get_template_part('template-parts/content', 'flex-panel-gallery');
   get_footer();
 ?>

@@ -2,11 +2,14 @@
 function brook_house_theme_files() {
 	wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
 	wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
+	wp_enqueue_style('slick-styling', get_theme_file_uri('/css/slick-style.css'), NULL, microtime());
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
 	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4', NULL,  true);
 	wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
-	wp_enqueue_script('main-js', get_theme_file_uri('/js/scripts.js'), NULL, microtime(), true);
+	wp_enqueue_script('lazy-loading', '//cdn.jsdelivr.net/npm/lozad', NULL, true);
+	wp_enqueue_script('slick-js', get_theme_file_uri('/js/slick.js'), array( 'jquery' ), '0.1', true);
+	wp_enqueue_script('main-js', get_theme_file_uri('/js/scripts.js'), array( 'jquery' ), microtime(), true);
 }
 add_action('wp_enqueue_scripts', 'brook_house_theme_files');
 
@@ -16,34 +19,15 @@ add_action('wp_enqueue_scripts', 'brook_house_theme_files');
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
 
-//Custom Post Types
-function custom_post_types() {
-	register_post_type('exmouth', array(
-		'supports' => array('title', 'editor', 'excerpt', 'page-attributes'),
-		'rewrite' => array('slug' => 'exmouth'),
-		'has_archive' => true,
-		'public' => true,
-		'taxonomies'  => array( 'category' ),
-		'labels' => array(
-			'name' => 'Exmouth',
-			'add_new_item' => 'Add New Post',
-			'edit_item' => 'Edit Post',
-			'all_items' => 'All Posts',
-			'singular_name' => 'Posts'
-		),
-		'menu_icon' => 'dashicons-format-status'
-	));		
-}
- add_action('init', 'custom_post_types');
-
+//
 //removes header admin bar
-function carly_ann_features() {
+function theme_features() {
 	add_theme_support('title-tag');
   	register_nav_menu('header-menu',__( 'Header Menu' ));
 	add_theme_support('post-thumbnails');
 }
 
-add_action('after_setup_theme', 'carly_ann_features');
+add_action('after_setup_theme', 'theme_features');
 
 function remove_admin_login_header() { //Removes Admin Header Bar
     remove_action('wp_head', '_admin_bar_bump_cb');

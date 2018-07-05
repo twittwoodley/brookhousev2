@@ -87,10 +87,15 @@ console.log(marker);
 
 		// show info window when marker is clicked
 		google.maps.event.addListener(marker, 'click', function() {
-
 			infowindow.open( map, marker );
-
+			console.log(infowindow);
 		});
+
+	// close info window when map is clicked
+	     google.maps.event.addListener(map, 'click', function(event) {
+	        if (infowindow) {
+	            infowindow.close(); }
+			}); 
 	}
 
 }

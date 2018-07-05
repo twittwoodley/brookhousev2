@@ -16,15 +16,10 @@
 <div class="content-wrap">
 	<?php while(have_posts()) {
 		the_post(); 
-		the_content();	 
-$location = get_field('gmap');
- 
-if( !empty($location) ):
+		the_content();	  
+} ?>
+</div>
+
+<?php 
+	get_footer();
 ?>
-<div class="acf-map">
- <div class="marker" data-lat="<?php echo $location['lat']; ?>" data-lng="<?php echo $location['lng']; ?>"></div>
-</div>
-<?php endif;
-	}
-		?>
-</div>

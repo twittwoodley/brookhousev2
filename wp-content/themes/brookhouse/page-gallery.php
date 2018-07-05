@@ -15,7 +15,7 @@
 				$counter = 0;
 			}
 			?>
-				<img src="<?php echo $galleryImage['src'] ?>">
+				<img class="lozad" data-src="<?php echo $galleryImage['src'] ?>">
 			<?php
 			$counter++;
 		}
