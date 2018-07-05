@@ -68,76 +68,7 @@
 	<div style="width:100px; height:100px; background:goldenrod;">6</div>	
 	<div style="width:100px; height:100px; background:black;">7</div>	
 </div> -->
-<div class="reviews-cont">
-	<div class="autoplay" style="max-width:1100px;">
-		<div class="review">
-			<h3>I love this Place</h3>
-			<p>
-				I love this place. It's a great place for the whole family. Perfect!
-			</p>
-			<div class="star-cont">
-				<i class="far fa-star"></i>
-				<i class="far fa-star"></i>
-				<i class="far fa-star"></i>
-				<i class="far fa-star"></i>
-				<i class="far fa-star"></i>
-			</div>
-		</div>	
-			<div class="review">
-				<h3>Paridise</h3>
-				<p>
-					Sun, sea and sand. My idea of heaven. Such a nice place to stay
-				</p>
-				<div class="star-cont">
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-				</div>
-			</div>
-			<div class="review">
-				<h3>Heaven on earth</h3>
-				<p>
-					I challenge anyone to stay here and not have the time of thier lives
-				</p>
-				<div class="star-cont">
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-				</div>
-			</div>
-			<div class="review">
-				<h3>Lovely stuff</h3>
-				<p>
-					Cool place, great BBQ hamper, super beaches. 
-				</p>
-				<div class="star-cont">
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-				</div>
-			</div>
-			<div class="review">
-				<h3>The hosts with the most</h3>
-				<p>
-					Brook House is amazing. Bob and Dyi are the best
-				</p>
-				<div class="star-cont">
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-					<i class="far fa-star"></i>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
 <?php
+	get_template_part('template-parts/content', 'reviews');
 	get_footer();
 	?>

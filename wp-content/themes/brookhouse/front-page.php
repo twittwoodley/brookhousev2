@@ -52,8 +52,7 @@ Nullam magna velit, vestibulum et massa vel, pretium fringilla odio. Maecenas at
 Cras tempus nunc venenatis orci efficitur, ac accumsan sem ultrices. Curabitur interdum lacus ut justo sodales porta. Aliquam ante velit, consequat ut augue quis, tincidunt viverra orci. Nam cursus, ligula vitae imperdiet interdum, odio orci condimentum lectus, interdum dictum tortor mauris a tellus.
 <br><br>
 Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci massa, convallis ut hendrerit in, scelerisque eget leo. Interdum et malesuada fames ac ante ipsum primis in faucibus. Ut enim sem, malesuada quis augue non, mollis blandit erat. Nullam in aliquet tortor. Nulla tellus justo, eleifend ut nibh eget, fermentum ultrices odio. Mauris a dolor sed mauris accumsan viverra. 
-<br><br>
-Etiam a feugiat augue. Vivamus a finibus purus, id posuere turpis. Vestibulum quis elit quis lectus accumsan iaculis quis ac tellus. Nam sed urna nisi. Aenean lacinia pellentesque nibh ut cursus. Proin ac tortor sit amet erat lobortis mollis. Vestibulum bibendum vulputate nulla.<br><br></p></div>
+</p></div>
 </div>
 	</div>
 <!-- Gallery Section -->
@@ -89,6 +88,11 @@ Etiam a feugiat augue. Vivamus a finibus purus, id posuere turpis. Vestibulum qu
 	</div>
 </section>
 
+<!-- Reviews Section -->
+<?php
+	get_template_part('template-parts/content', 'reviews');
+
+?>
 <!-- Best of Exmouth Section -->
 	<h2>The Best Of Exmouth</h2>
 <?php get_template_part('template-parts/content', 'flex-panel-gallery'); ?>
