@@ -1,6 +1,6 @@
 <footer>
 		<div> <!-- 1st -->
-			<a href="<?php echo site_url() ?>"><img src="<?php echo get_theme_file_uri('/img/carly-logo-white.png'); ?>"></a>
+			<a href="<?php echo site_url() ?>"><img src="<?php echo get_theme_file_uri('/img/little-brook-logo.png'); ?>"></a>
 		</div>
 		<div> <!-- 2nd -->
 			<ul class="footer-list">

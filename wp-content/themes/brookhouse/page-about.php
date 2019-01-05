@@ -2,7 +2,7 @@
 	get_header();
 
 ?>
-	<section class="home-jumbotron" style="background-image: url(<?php echo get_theme_file_uri('/img/brook-house-cover.jpg'); ?>)">
+	<section class="home-jumbotron" style="background-image: url(<?php echo get_the_post_thumbnail_url() ?>)">
 		<div class="jumbo-dark-underlay dark-underlay"></div>
 	    <div class="inner-jumbo">
 	      <div class="bar"></div>
@@ -15,7 +15,7 @@
 ?>
 	<div class="about-container">
 <!-- Item 1 -->
-		<div class="about-image" style="background-image:url('<?php echo get_theme_file_uri('/img/lounge-ph.jpg'); ?>')">
+		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1630.jpg') ?>')">
 			<div class="white-overlay overlay-right"></div>
 		</div>
 		<div class="about-desc">
@@ -34,7 +34,7 @@
 		</div>
 
 <!-- Item 3 -->
-		<div class="about-image" style="background-image:url('<?php echo get_theme_file_uri('/img/bbq-PH.jpg'); ?>')">
+		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1644.jpg'); ?>')">
 			<div class="white-overlay overlay-right"></div>
 		</div>
 		<div class="about-desc">
@@ -52,7 +52,7 @@
 			<p>Comfort is king here at Brook house. Our bedroom comes with a duluxe double bed, to ensure you get a good nights sleep.</p>
 			<p>A sofa bed is also available if required</p>
 		</div>
-		<div class="about-image" style="background-image:url('<?php echo get_theme_file_uri('/img/bed-ph.jpg'); ?>');">
+		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1620.jpg') ?>');">
 			<div class="white-overlay overlay-left"></div>
 		</div>
 

@@ -18,9 +18,7 @@
 
 		      <h3><?php echo $category->name ?></h3>
 				<p class="panel-excerpt">
-					<?php echo $category->description ?>
-					<br>
-					<span class="read-more"><a href="<?php echo get_site_url(null, '/category/'.$category->slug) ?>">Read More >></a></span>
+					<span class="read-more"><a href="<?php echo get_site_url(null, '/category/'.$category->slug) ?>">Read More</a></span>
 				</p>
 			</div>
             <?php 

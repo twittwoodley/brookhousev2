@@ -2,12 +2,11 @@
 	get_header();
 
 ?>
-	<section class="home-jumbotron" style="background-image: url(<?php echo get_theme_file_uri('/img/brook-house-cover.jpg'); ?>)">
+	<section class="home-jumbotron" style="background-image: url(<?php echo get_the_post_thumbnail_url(); ?>)">
 		<div class="jumbo-dark-underlay dark-underlay"></div>
 		<div class="inner-jumbo">
-			<div class="bar"></div>
-			<img src="<?php echo get_theme_file_uri('/img/carly-logo-white.png'); ?>">
-			<div class="bar"></div>
+							<img src="<?php echo get_theme_file_uri('/img/little-brook-logo.png'); ?>">
+			<h4 style="color:white">Premium accomodation situated within Exmouth, Devon</h4>
 		</div>
 	</section>
 <?php
