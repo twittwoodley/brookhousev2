@@ -1,9 +1,11 @@
 <?php
 function custom_post_types() {
-
+//Exmouth post type
 	register_post_type('exmouth', array(
 		'supports' => array('title', 'editor', 'excerpt', 'page-attributes'),
 		'rewrite' => array('slug' => 'exmouth'),
+		'capability_type' => 'Exmouth',
+		'map_meta_cap' => true,
 		'has_archive' => true,
 		'public' => true,
 		'taxonomies'  => array( 'category' ),
@@ -14,13 +16,15 @@ function custom_post_types() {
 			'all_items' => 'All Posts',
 			'singular_name' => 'Posts'
 		),
-		'menu_icon' => 'dashicons-format-status'
+		'menu_icon' => 'dashicons-format-status',
 	));		
 
-	//Campus post type
+	//Review post type
 	register_post_type('Review', array(
 		'supports' => array('title', 'editor'),
 		'rewrite' => array('slug' => 'Reviews'),
+		'capability_type' => 'Reviews',
+		'map_meta_cap' => true,
 		'has_archive' => false,
 		'public' => true,
 		'labels' => array(
@@ -35,4 +39,4 @@ function custom_post_types() {
 }
 
 add_action('init', 'custom_post_types');
-?>
+

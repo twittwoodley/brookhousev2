@@ -19,5 +19,17 @@
 </footer>
 </div> <!-- Site Wrap closing div -->
 <?php wp_footer(); ?>
+<div class="dark-body-overlay"></div>
+<div class="hamburger-container" id="hamburger" onclick="toggleNav(this)">
+    <div class="bar1"></div>
+    <div class="bar2"></div>
+    <div class="bar3"></div>
+	</div>
+	<script>
+		
+		function toggleNav(e) {
+			document.querySelector('body').classList.toggle('mobile-nav-open')
+		}
+	</script>
 </body>
 </html>

@@ -15,34 +15,34 @@
 
 <!-- About Section -->
 <div class="about-section">
-	<div>
-	<div class="about-inner">
-		<div class="about-icon-container">
-			<div class="about-icon"><i class="fa fa-bed"></i></div>
-		</div>
-		<div class="about-text-container">
-			<h2>Sleep</h2>
-			<p>Brook house can accomodate up to 4 people. It comes with 1 doubole bedroom, with the addition of a comfortable sofa bed situated in the lounge area.</p>
-		</div>
-	</div>
-	<div class="about-inner">
-		<div class="about-icon-container">
-			<div class="about-icon"><i class="fa fa-utensils"></i></div>
-		</div>
-		<div class="about-text-container">
-			<h2>Eat</h2>
-			<p>If you fancy eating in, you can use the private, fully equiped kitchen</p>
-		</div>
-	</div>
+	<div class="info-with-logos">
 		<div class="about-inner">
-		<div class="about-icon-container">
-			<div class="about-icon"><i class="fa fa-couch"></i></div>
+			<div class="about-icon-container">
+				<div class="about-icon"><i class="fa fa-bed"></i></div>
+			</div>
+			<div class="about-text-container">
+				<h2>Sleep</h2>
+				<p>Brook house can accomodate up to 4 people. It comes with 1 doubole bedroom, with the addition of a comfortable sofa bed situated in the lounge area.</p>
+			</div>
 		</div>
-		<div class="about-text-container">
-			<h2>Relax</h2>
-			<p>Had a long day exploring the wonderful surroundings? Relax in your own private living room.</p>
+		<div class="about-inner">
+			<div class="about-icon-container">
+				<div class="about-icon"><i class="fa fa-utensils"></i></div>
+			</div>
+			<div class="about-text-container">
+				<h2>Eat</h2>
+				<p>If you fancy eating in, you can use the private, fully equiped kitchen</p>
+			</div>
 		</div>
-	</div>
+			<div class="about-inner">
+			<div class="about-icon-container">
+				<div class="about-icon"><i class="fa fa-couch"></i></div>
+			</div>
+			<div class="about-text-container">
+				<h2>Relax</h2>
+				<p>Had a long day exploring the wonderful surroundings? Relax in your own private living room.</p>
+			</div>
+		</div>
 	</div>
 	<div class="about-inner" style="background: var(--wheat)"><div>
 		<h2 style="margin-top: 43px;">A perfect getaway in a perfect location</h2>
@@ -56,6 +56,8 @@ Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci m
 	</div>
 <!-- Gallery Section -->
 <section>
+<h2 class="title-mobile">Gallery</h2>
+
 	<div id="gallery">
 		<div id="bigimages">
 
@@ -74,7 +76,7 @@ Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci m
 			} ?>
 		</div>
 		<div class="gallery-thumb-cont">
-			<h2>Gallery</h2>
+			<h2 class="title-desktop">Gallery</h2>
 			<div id="thumbs">
 				<?php foreach( $gallery as $image_obj ) { ?>
 				<a href="javascript: changeImage(<?php echo $counter2++ ?>);">

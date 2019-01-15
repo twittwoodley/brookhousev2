@@ -5,8 +5,8 @@ function brook_house_theme_files() {
 	wp_enqueue_style('slick-styling', get_theme_file_uri('/css/slick-style.css'), NULL, microtime());
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
-	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4', NULL,  true);
-	wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
+	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyBdmzLEQnTGxlI7O9DhS4UO5oQ_wAMXH1w', NULL,  true);
+    wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
 	wp_enqueue_script('lazy-loading', '//cdn.jsdelivr.net/npm/lozad', NULL, true);
 	wp_enqueue_script('slick-js', get_theme_file_uri('/js/slick.js'), array( 'jquery' ), '0.1', true);
 	wp_enqueue_script('main-js', get_theme_file_uri('/js/scripts.js'), array( 'jquery' ), microtime(), true);
@@ -38,13 +38,12 @@ add_action('get_header', 'remove_admin_login_header');
 show_admin_bar( false );
 
 //Gmaps
-function my_acf_google_map_api( $api ){
- $api['key'] = 'AIzaSyC1EUA04v3wsSDwHbd9nEuh9Y6BZJlfsu4';
- return $api;
- 
-}
- 
-add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
+function universityMapKey($api) {
+    $api['key'] = 'AIzaSyBdmzLEQnTGxlI7O9DhS4UO5oQ_wAMXH1w';
+    return $api;
+  }
+  
+  add_filter('acf/fields/google_map/api', 'universityMapKey');
 
 function get_post_gallery_images_with_info($postvar = NULL) {
     if(!isset($postvar)){
@@ -74,3 +73,22 @@ function get_post_gallery_images_with_info($postvar = NULL) {
     }
     return $image_gallery_with_info;
 }
+
+// Removes from admin menu
+add_action( 'admin_menu', 'my_remove_admin_menus' );
+function my_remove_admin_menus() {
+    remove_menu_page( 'edit-comments.php' );
+}
+// Removes from post and pages
+add_action('init', 'remove_comment_support', 100);
+
+function remove_comment_support() {
+    remove_post_type_support( 'post', 'comments' );
+    remove_post_type_support( 'page', 'comments' );
+}
+// Removes from admin bar
+function mytheme_admin_bar_render() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+}
+add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );

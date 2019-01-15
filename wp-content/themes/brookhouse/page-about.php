@@ -15,16 +15,19 @@
 ?>
 	<div class="about-container">
 <!-- Item 1 -->
-		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1630.jpg') ?>')">
-			<div class="white-overlay overlay-right"></div>
-		</div>
-		<div class="about-desc">
-			<h2><i class="fa fa-couch"></i> Relax</h2>
-			<p>Comfort is king here at Brook house. You will have exculsive access to our semi-detached annexe. It comes full equipped with everything you need and more, ensuring you have a trip to remember when you come to south east Devon.
+	<div class="about-info-card about-info-card-opposite">		
+		<div class="about-image below" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1630.jpg') ?>')">
+		<div class="white-overlay overlay-right"></div>
+	</div>
+	<div class="about-desc">
+		<h2><i class="fa fa-couch"></i> Relax</h2>
+		<p>Comfort is king here at Brook house. You will have exculsive access to our semi-detached annexe. It comes full equipped with everything you need and more, ensuring you have a trip to remember when you come to south east Devon.
 			</p>
 		</div>
+	</div>
 
 <!-- Item 2 -->
+<div class="about-info-card">		
 		<div class="about-desc">
 			<h2><i class="fa fa-compass"></i> Explore</h2>
 			<p>We love our location, and we'llknow you'll love it to. Situated in an area of outstanding natural beauty, there is something for everyone. Have a look at our <a href="<?php echo get_post_type_archive_link( 'exmouth' ); ?>">interactive map</a> to see what's near by</p>
@@ -32,9 +35,12 @@
 		<div class="about-image" style="background-image:url('<?php echo get_theme_file_uri('/img/campfire-ph.jpg'); ?>');">
 			<div class="white-overlay overlay-left"></div>
 		</div>
+</div>
 
 <!-- Item 3 -->
-		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1644.jpg'); ?>')">
+<div class="about-info-card about-info-card-opposite">		
+
+		<div class="about-image below" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1644.jpg'); ?>')">
 			<div class="white-overlay overlay-right"></div>
 		</div>
 		<div class="about-desc">
@@ -45,8 +51,11 @@
 			</p>
 		
 		</div>
+</div>
 
 <!-- Item 4 -->
+<div class="about-info-card">		
+
 		<div class="about-desc">
 			<h2><i class="fa fa-bed"></i> Sleeping</h2>
 			<p>Comfort is king here at Brook house. Our bedroom comes with a duluxe double bed, to ensure you get a good nights sleep.</p>
@@ -54,8 +63,7 @@
 		</div>
 		<div class="about-image" style="background-image:url('<?php echo site_url('/wp-content/uploads/2018/12/DSC_1620.jpg') ?>');">
 			<div class="white-overlay overlay-left"></div>
-		</div>
-
+</div>
 		</div>
 	</div>
 	

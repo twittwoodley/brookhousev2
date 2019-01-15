@@ -14,11 +14,13 @@
 	get_template_part('template-parts/content', 'navigation');
 ?>
 <div class="content-wrap">
+  <div class="blog-content">
 	<?php while(have_posts()) {
 		the_post(); 
 		the_content();	  
-} ?>
+	} ?>
 </div>
+	</div>
 
 <?php 
 	get_footer();
