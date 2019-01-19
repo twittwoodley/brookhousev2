@@ -13,7 +13,7 @@
 			<ul class="footer-list">
 				<li>Content by The Brook House Team</li>
 				<li>Designed by Tom Woodley</li>
-				<li>&copy Brook House 2018 </li>
+				<li>&copy Brook House <?php echo date("Y");?> </li>
 			</ul>			
 		</div>
 </footer>

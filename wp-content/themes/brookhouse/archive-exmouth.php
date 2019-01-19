@@ -2,7 +2,7 @@
 	get_header();
 ?>
 
-  <section class="home-jumbotron" style="background-image: url(<?php echo get_theme_file_uri('/img/brook-house-cover.jpg'); ?>)">
+  <section class="home-jumbotron" style="background-image: url(<?php echo get_theme_file_uri('/img/exmouth-cover.jpg'); ?>)">
     <div class="jumbo-dark-underlay dark-underlay"></div>
      <div class="inner-jumbo">
       <div class="bar"></div>

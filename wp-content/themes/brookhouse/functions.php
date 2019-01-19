@@ -1,12 +1,15 @@
 <?php
+
+require get_theme_file_path('/inc/gmaps.php');
+
 function brook_house_theme_files() {
 	wp_enqueue_style('custom-google-font', '//fonts.googleapis.com/css?family=Parisienne|Poiret+One'); //Google Font
 	wp_enqueue_style('font-awesome', '//use.fontawesome.com/releases/v5.0.13/css/all.css'); //Font Awesome
 	wp_enqueue_style('slick-styling', get_theme_file_uri('/css/slick-style.css'), NULL, microtime());
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
-	wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyBdmzLEQnTGxlI7O9DhS4UO5oQ_wAMXH1w', NULL,  true);
-    wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
+	//wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyColr51jEy3k4Wqp5LHXpHeFTGVObnhy0M', NULL,  true);
+	wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
 	wp_enqueue_script('lazy-loading', '//cdn.jsdelivr.net/npm/lozad', NULL, true);
 	wp_enqueue_script('slick-js', get_theme_file_uri('/js/slick.js'), array( 'jquery' ), '0.1', true);
 	wp_enqueue_script('main-js', get_theme_file_uri('/js/scripts.js'), array( 'jquery' ), microtime(), true);
@@ -38,12 +41,14 @@ add_action('get_header', 'remove_admin_login_header');
 show_admin_bar( false );
 
 //Gmaps
-function universityMapKey($api) {
-    $api['key'] = 'AIzaSyBdmzLEQnTGxlI7O9DhS4UO5oQ_wAMXH1w';
-    return $api;
-  }
-  
-  add_filter('acf/fields/google_map/api', 'universityMapKey');
+// function my_acf_google_map_api( $api ){
+	
+// 	$api['key'] = 'AIzaSyColr51jEy3k4Wqp5LHXpHeFTGVObnhy0M';
+	
+// 	return $api;
+	
+// }
+// add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
 
 function get_post_gallery_images_with_info($postvar = NULL) {
     if(!isset($postvar)){
@@ -74,6 +79,7 @@ function get_post_gallery_images_with_info($postvar = NULL) {
     return $image_gallery_with_info;
 }
 
+//Remove comments from all admin screens
 // Removes from admin menu
 add_action( 'admin_menu', 'my_remove_admin_menus' );
 function my_remove_admin_menus() {

@@ -4,6 +4,12 @@
 
 /wp-includes/
 
+/plugins/
+
+/uploads/
+
+/ai1wm-backups/
+
 index.php
 
 license.txt
@@ -35,3 +41,5 @@ wp-signup.php
 wp-trackback.php
 
 xmlrpc.php
+
+gmaps.php

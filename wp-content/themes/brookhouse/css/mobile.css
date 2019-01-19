@@ -12,6 +12,15 @@
   }
 }
 
+/* Set Jumbotron BG image to initial for mobile devices */
+
+@media only screen and (max-width: 480px) /* Mobile */ {
+  .home-jumbotron {
+    background-attachment: initial;
+  }
+}
+
+
 /* Nav */
 
 @media(min-width: 640px) {
@@ -144,8 +153,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    }
-          
+  }
   .about-text-container, .about-section .about-inner { 
     padding: 10px;
   }
@@ -184,14 +192,6 @@
   }
 }
 
-/* Reviews */
-/* @media(max-width: 629px) {
-  .reviews-cont .review p, .reviews-cont .review h3 {
-    width: 90vw;
-    margin: 0 auto;
-  }
-} */
-
 /* Flex Panels */
 @media(max-width: 900px) {
   .panels {
@@ -210,16 +210,23 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
+
+  .footer-list {
+    padding: 0;
+  }
 }
 
 /* About Page */
 @media(max-width: 900px) {
   .about-info-card {
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 
   .about-image, .about-desc {
-    flex: 1 0 100%;
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 100%;
+            flex: 1 0 100%;
   }
 
   .white-overlay {
@@ -227,7 +234,9 @@
   }
 
   .about-container .below{
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
   }
 }
 
@@ -236,14 +245,31 @@
 /* Gallery Page*/
  @media(max-width: 750px) {
    .column {
-     flex: 50%;
+     -webkit-box-flex: 50%;
+         -ms-flex: 50%;
+             flex: 50%;
      max-width: 50%;
    }
  }
 
  @media(max-width: 500px) {
   .column {
-    flex: 100%;
+    -webkit-box-flex: 100%;
+        -ms-flex: 100%;
+            flex: 100%;
     max-width: 100%;
+  }
+}
+
+/* Exmouth Blog */
+
+@media(max-width: 850px) {
+  
+  .blog-content img {
+    width: 90%;
+    margin:  0 auto;
+    display: block;
+    float: none;
+    min-width: 0;
   }
 }

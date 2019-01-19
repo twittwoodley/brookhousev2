@@ -104,8 +104,8 @@ get_template_part('template-parts/content', 'navigation'); // get nav bar
         <div class="dark-underlay"></div>
         <h3><?php echo $post[0] ?></h3>
         <p class="panel-excerpt">
-          <?php echo $post[1] ?><br>
-          <br>
+          <!-- <?php echo $post[1] ?><br> -->
+          <!-- <br> -->
           <span class="read-more"><a href="<?php echo $post[2] ?>">Read More >></a></span>
         </p>
       </div>

@@ -64,7 +64,7 @@ Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci m
 			<?php
 			$gallery = get_post_gallery_images_with_info();	
 			$counter = 1;
-			$counter2 = 1;
+			$counter2 = 0;
 
 
 				// Loop through each image in each gallery
@@ -79,7 +79,7 @@ Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci m
 			<h2 class="title-desktop">Gallery</h2>
 			<div id="thumbs">
 				<?php foreach( $gallery as $image_obj ) { ?>
-				<a href="javascript: changeImage(<?php echo $counter2++ ?>);">
+				<a href="#" data-count=<?php echo $counter2++?>>
 					<img style="background-image: url(<?php echo $image_obj['src'] ?>)"/>
 				</a>
 			<?php
