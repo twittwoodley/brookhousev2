@@ -60,27 +60,31 @@ Praesent ut lacus dapibus dolor semper convallis eu vel mauris. Phasellus orci m
 
 	<div id="gallery">
 		<div id="bigimages">
-
+			<div class="nextprev" id="previousImage"></div>
+			<div class="nextprev" id="nextImage"></div>
 			<?php
 			$gallery = get_post_gallery_images_with_info();	
 			$counter = 1;
 			$counter2 = 0;
+?>
 
-
-				// Loop through each image in each gallery
-			foreach( $gallery as $image_obj ) { ?>
-				<div class="main-image" id="normal<?php echo $counter++ ?>" style="background-image: url(<?php echo $image_obj['src'] ?>);">
-					<div class="inner-gallery-overlay"><?php echo $image_obj['caption']	?></div>
+				<div class="main-image" style="background-image: url(<?php echo $gallery[0][src] ?>);">
+					<div class="inner-gallery-overlay"><?php echo $gallery[0][caption]	?></div>
 				</div>
-				<?php
-			} ?>
 		</div>
 		<div class="gallery-thumb-cont">
 			<h2 class="title-desktop">Gallery</h2>
 			<div id="thumbs">
-				<?php foreach( $gallery as $image_obj ) { ?>
-				<a href="#" data-count=<?php echo $counter2++?>>
-					<img style="background-image: url(<?php echo $image_obj['src'] ?>)"/>
+				<?php foreach( $gallery as $image_obj ) { 
+					?>
+				
+				<a href="#" data-count=<?php echo $counter2++?>
+					data-full-size-url = "<?php echo $image_obj['src'] ?>"
+					data-caption="<?php echo $image_obj['caption'] ?>"
+				>
+					<div class="thumb"
+					style="background-image: url(<?php echo $image_obj['medium_src'] ?>)"
+				></div>
 				</a>
 			<?php
 			}?>

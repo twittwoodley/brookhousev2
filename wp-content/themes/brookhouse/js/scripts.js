@@ -1,65 +1,84 @@
 //Scripts
-/*    const nav = document.querySelector('#main');
-    let topOfNav = nav.offsetTop;
-
-    function fixNav() {
-      if (window.scrollY >= topOfNav) {
-        document.body.style.paddingTop = nav.offsetHeight + 'px';
-        document.body.classList.add('fixed-nav');
-      } else {
-        document.body.classList.remove('fixed-nav');
-        document.body.style.paddingTop = 0;
-      }
-    }
-
-    window.addEventListener('scroll', fixNav);
-*/
 
 // Reusable Vars
 const body = document.body;
 
 //Gallery JS
-// function changeImage(current) {
-//   var imagesNumber = document.getElementById("bigimages").childElementCount;
-
-//   for (i = 1; i <= imagesNumber; i++) {
-//     if (i == current) {
-//       console.log(current);
-//       document.getElementById("normal" + current).style.opacity = "1";
-//     } else {
-//       document.getElementById("normal" + i).style.opacity = "0";
-//     }
-//   }
-//   console.log(this);
-//   //thumbsScrollX().bind(this);
-// }
+//Large Image Container
+const currentImg = document.querySelector(".main-image"),
+  //Get the thumbnail container
+  thumbsContainer = document.querySelector("#thumbs");
+//Set the current data count image to 0
+let currentThumb = 0;
+const galleryOverlay = document.querySelector(".inner-gallery-overlay");
 
 function changeImage(e) {
+  //Prevent page from reloading when a tag is clicked
   e.preventDefault();
-  var nextImage = parseInt(e.target.parentElement.dataset.count) + 1;
-  var imagesNumber = document.getElementById("bigimages").childElementCount;
+  //Get the full size image src from the thumbs data attr and set it as the large image container bg img
+  currentImg.style.backgroundImage = `url(${this.attributes[2].value})`;
+  //Change overlay content
+  galleryOverlay.innerHTML = this.attributes[3].value;
 
-  for (i = 1; i <= imagesNumber; i++) {
-    if (i == nextImage) {
-      console.log(current);
-      document.getElementById("normal" + nextImage).style.opacity = "1";
-    } else {
-      document.getElementById("normal" + i).style.opacity = "0";
-    }
+  //get the data count of the clicked thumb
+  const dataCount = parseInt(this.attributes[1].value);
+  //get the thumb width in pixels
+  const thumbWidth = this.clientWidth;
+  console.log(
+    `Scroll width: ${thumbsContainer.scrollWidth}  
+     Container Element Width: ${thumbsContainer.clientWidth}
+     Thumb Width: ${this.clientWidth}
+     Data-count: ${dataCount}
+     Distance from left: ${this.offsetLeft}
+    `
+  );
+  //declare the scroll amount
+  let scrollAmount;
+  //See which way to scroll the thumb container and set the scroll left value
+  if (currentThumb > dataCount) {
+    scrollAmount = -(currentThumb - dataCount) * thumbWidth;
+    thumbsContainer.scrollLeft += scrollAmount;
+    console.log(scrollAmount);
+  } else {
+    console.log("scroll right");
+    scrollAmount = -(currentThumb - dataCount) * thumbWidth;
+    thumbsContainer.scrollLeft += scrollAmount;
+    console.log(scrollAmount);
   }
-
-  var displayedImage = 8;
+  //Update the current thumb data count of image on display
+  currentThumb = dataCount;
 }
-
-document.addEventListener("DOMContentLoaded", () => {
-  alert("loaded");
-  forEach();
-});
 
 const thumbs = document.querySelectorAll("#thumbs a");
 thumbs.forEach(thumb => {
   thumb.addEventListener("click", changeImage);
 });
+
+//Change this on main site
+if (window.location.href.slice(-7) === ".local/") {
+  document.querySelector("#bigimages").addEventListener("click", e => {
+    if (e.target.attributes[1].value === "nextImage") {
+      console.log("next");
+      const nextImg =
+        thumbs[currentThumb + 1].attributes[2].value ||
+        thumbs[thumbs.length - 1].attributes[2].value;
+      currentImg.style.backgroundImage = `url(${nextImg})`;
+      currentThumb++;
+      console.log(thumbs[thumbs.length - 1]);
+      thumbsContainer.scrollLeft += thumbs[0].clientWidth;
+      galleryOverlay.innerHTML = thumbs[currentThumb].attributes[3].value;
+    }
+
+    if (e.target.attributes[1].value === "previousImage") {
+      console.log("prev");
+      const nextImg = thumbs[currentThumb - 1];
+      currentImg.style.backgroundImage = `url(${nextImg.attributes[2].value})`;
+      currentThumb--;
+      thumbsContainer.scrollLeft -= thumbs[0].clientWidth;
+      galleryOverlay.innerHTML = thumbs[currentThumb].attributes[3].value;
+    }
+  });
+}
 
 // Flex Panels JS
 const panels = document.querySelectorAll(".panel");
@@ -153,34 +172,34 @@ window.onload = function() {
   });
 };
 
-// Change Gallery Slider Position
-//const thumbs = document.querySelectorAll("#thumbs a");
-const thumbsContainer = document.querySelector("#thumbs");
+// // Change Gallery Slider Position
+// //const thumbs = document.querySelectorAll("#thumbs a");
+// const thumbsContainer = document.querySelector("#thumbs");
 
-function thumbsScrollX(e) {
-  // const offsetLeft = this.offsetLeft,
-  //   objectWidth = this.clientWidth,
-  //   scrollLeft =
-  //     window.pageXOffset !== undefined
-  //       ? window.pageXOffset
-  //       : (
-  //           document.documentElement ||
-  //           document.body.parentNode ||
-  //           document.body
-  //         ).scrollLeft,
-  //   moveBy =
-  //     scrollLeft -
-  //     offsetLeft +
-  //     thumbsContainer.clientWidth / 2 -
-  //     objectWidth / 2;
-  // console.log(moveBy);
-  // console.log([thumbsContainer]);
-  // thumbsContainer.scrollBy(moveBy, 0);
+// function thumbsScrollX(e) {
+//   // const offsetLeft = this.offsetLeft,
+//   //   objectWidth = this.clientWidth,
+//   //   scrollLeft =
+//   //     window.pageXOffset !== undefined
+//   //       ? window.pageXOffset
+//   //       : (
+//   //           document.documentElement ||
+//   //           document.body.parentNode ||
+//   //           document.body
+//   //         ).scrollLeft,
+//   //   moveBy =
+//   //     scrollLeft -
+//   //     offsetLeft +
+//   //     thumbsContainer = .clientWidth / 2 -
+//   //     objectWidth / 2;
+//   // console.log(moveBy);
+//   // console.log([thumbsContainer = ]);
+//   // thumbsContainer = .scrollBy(moveBy, 0);
 
-  console.log([this], [thumbsContainer]);
-  thumbsContainer.scrollBy(this.offsetLeft / 2 - this.clientWidth / 2, 0);
-}
+//   console.log([this], [thumbsContainer = ]);
+//   thumbsContainer = .scrollBy(this.offsetLeft / 2 - this.clientWidth / 2, 0);
+// }
 
-// thumbs.forEach(thumb => {
-//   thumb.addEventListener("click", thumbsScrollX);
-// });
+// // thumbs.forEach(thumb => {
+// //   thumb.addEventListener("click", thumbsScrollX);
+// // });

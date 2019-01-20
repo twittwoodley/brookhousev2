@@ -8,7 +8,6 @@ function brook_house_theme_files() {
 	wp_enqueue_style('slick-styling', get_theme_file_uri('/css/slick-style.css'), NULL, microtime());
 	wp_enqueue_style('main-styling', get_theme_file_uri('/css/main.css'), NULL, microtime());
 	wp_enqueue_style('mobile-styling', get_theme_file_uri('/css/mobile.css'), NULL, microtime());
-	//wp_enqueue_script('google-map', '//maps.googleapis.com/maps/api/js?key=AIzaSyColr51jEy3k4Wqp5LHXpHeFTGVObnhy0M', NULL,  true);
 	wp_enqueue_script( 'google-map-init', get_template_directory_uri() . '/js/google-maps.js', array('google-map', 'jquery'), '0.1', true );
 	wp_enqueue_script('lazy-loading', '//cdn.jsdelivr.net/npm/lozad', NULL, true);
 	wp_enqueue_script('slick-js', get_theme_file_uri('/js/slick.js'), array( 'jquery' ), '0.1', true);
@@ -40,16 +39,6 @@ add_action('get_header', 'remove_admin_login_header');
 
 show_admin_bar( false );
 
-//Gmaps
-// function my_acf_google_map_api( $api ){
-	
-// 	$api['key'] = 'AIzaSyColr51jEy3k4Wqp5LHXpHeFTGVObnhy0M';
-	
-// 	return $api;
-	
-// }
-// add_filter('acf/fields/google_map/api', 'my_acf_google_map_api');
-
 function get_post_gallery_images_with_info($postvar = NULL) {
     if(!isset($postvar)){
         global $post;
@@ -71,6 +60,7 @@ function get_post_gallery_images_with_info($postvar = NULL) {
             'caption' => $attachment->post_excerpt,
             'description' => $attachment->post_content,
             'href' => get_permalink($attachment->ID),
+            'medium_src' => wp_get_attachment_image_src($attachment->ID, 'medium')[0],
             'src' => $attachment->guid,
             'title' => $attachment->post_title
                 )
@@ -98,3 +88,33 @@ function mytheme_admin_bar_render() {
     $wp_admin_bar->remove_menu('comments');
 }
 add_action( 'wp_before_admin_bar_render', 'mytheme_admin_bar_render' );
+
+// function top_tip_shortcode() { 
+//   return <<<HTML 
+//     <!-- <div class="top-tip">
+// 			<h4>{echo get_field('top_tip_title') }</h4>
+// 				{echo get_field('tip_tip_content') }
+//     </div> 
+//     HTML; -->
+// }
+
+function top_tip_shortcode() {
+    $top_tip_title = get_field('top_tip_title');
+    $top_tip_content = get_field('tip_tip_content');
+
+    
+return <<<HTML
+    <div class="top-tip">
+        <h4>{$top_tip_title}</h4>
+        {$top_tip_content}
+    </div> 
+HTML;
+}
+
+function register_shortcodes(){
+    add_shortcode('top-tip', 'top_tip_shortcode');
+ }
+ 
+ add_action( 'init', 'register_shortcodes');
+?>
+

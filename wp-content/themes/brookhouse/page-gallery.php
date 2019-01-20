@@ -5,7 +5,7 @@
 	$galleryImageNo	= round((count($gallery)/3));
 	//print_r($gallery);
 ?>
-<div class="row">
+<div class="row gallery-page-container">
 <div class="column">
 	<?php
 		$counter = 0;

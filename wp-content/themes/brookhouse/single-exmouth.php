@@ -2,9 +2,10 @@
 	get_header();
 	?>
 <section class="home-jumbotron" style="background-image: url(<?php echo get_field('background_image') ?>)">	
+<div class="jumbo-dark-underlay dark-underlay"></div>
 	<div class="inner-jumbo">
 		<div class="bar"></div>
-		<div class="title-cont" ">
+		<div class="title-cont">
 			<h2><?php echo the_title()?></h2>
 		</div>
 		<div class="bar"></div>
@@ -17,7 +18,7 @@
   <div class="blog-content">
 	<?php while(have_posts()) {
 		the_post(); 
-		the_content();	  
+		the_content();
 	} ?>
 </div>
 	</div>
